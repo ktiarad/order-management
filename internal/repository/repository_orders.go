@@ -9,7 +9,7 @@ func (repo *repo) GetOrderDetail(
 	/*req*/ ctx context.Context, id int) (
 	/*res*/ order model.Order, err error,
 ) {
-	query := "SELECT id, title, description, user_id, status, price FROM orders WHERE id = $1"
+	query := "SELECT id, title, description, customer_id, status, price FROM orders WHERE id = $1"
 
 	statemnt, err := repo.db.Prepare(query)
 	if err != nil {
@@ -22,11 +22,11 @@ func (repo *repo) GetOrderDetail(
 	}
 
 	for row.Next() {
-		var id, user_id int
+		var id, customer_id int
 		var title, description, status string
 		var price float64
 
-		err = row.Scan(&id, &title, &description, &user_id, &status, &price)
+		err = row.Scan(&id, &title, &description, &customer_id, &status, &price)
 		if err != nil {
 			return order, err
 		}
@@ -35,7 +35,7 @@ func (repo *repo) GetOrderDetail(
 			ID:          id,
 			Title:       title,
 			Description: description,
-			UserID:      user_id,
+			CustomerID:  customer_id,
 			Status:      status,
 			Price:       price,
 		}
@@ -86,7 +86,7 @@ func (repo *repo) GetAllOrders(
 	/*req*/ ctx context.Context, request model.GetAllOrdersRequest) (
 	/*res*/ orders model.Orders, err error,
 ) {
-	query := "SELECT id, title, description, user_id, status, price FROM orders ORDER BY id LIMIT $1 OFFSET $2"
+	query := "SELECT id, title, description, customer_id, status, price FROM orders ORDER BY id LIMIT $1 OFFSET $2"
 
 	statemnt, err := repo.db.Prepare(query)
 	if err != nil {
@@ -101,11 +101,11 @@ func (repo *repo) GetAllOrders(
 	}
 
 	for rows.Next() {
-		var id, user_id int
+		var id, customer_id int
 		var title, description, status string
 		var price float64
 
-		err = rows.Scan(&id, &title, &description, &user_id, &status, &price)
+		err = rows.Scan(&id, &title, &description, &customer_id, &status, &price)
 		if err != nil {
 			return orders, err
 		}
@@ -114,7 +114,7 @@ func (repo *repo) GetAllOrders(
 			ID:          id,
 			Title:       title,
 			Description: description,
-			UserID:      user_id,
+			CustomerID:  customer_id,
 			Status:      status,
 			Price:       price,
 		}
@@ -129,7 +129,7 @@ func (repo *repo) CreateOrder(
 	/*req*/ ctx context.Context, request model.Order) (
 	/*res*/ err error,
 ) {
-	query := "INSERT INTO orders (title, description, user_id, status, price) VALUES ($1, $2, $3, $4, $5)"
+	query := "INSERT INTO orders (title, description, customer_id, status, price) VALUES ($1, $2, $3, $4, $5)"
 
 	statement, err := repo.db.Prepare(query)
 	if err != nil {
@@ -138,7 +138,7 @@ func (repo *repo) CreateOrder(
 
 	defer statement.Close()
 
-	_, err = statement.Exec(request.Title, request.Description, request.UserID, request.Status, request.Price)
+	_, err = statement.Exec(request.Title, request.Description, request.CustomerID, request.Status, request.Price)
 	if err != nil {
 		return err
 	}

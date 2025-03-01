@@ -4,7 +4,7 @@ type Order struct {
 	ID          int     `json:"id"`
 	Title       string  `json:"title"`
 	Description string  `json:"description"`
-	UserID      int     `json:"user_id"`
+	CustomerID  int     `json:"customer_id"`
 	Status      string  `json:"status"`
 	Price       float64 `json:"price"`
 }

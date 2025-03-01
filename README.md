@@ -91,7 +91,7 @@ curl --header "Content-Type: application/json" \
 curl --header "Content-Type: application/json" \
   --header "Authorization: Bearer <token>" \
   --request POST \
-  --data '{"title":"test", "description":"test order", "user_id":1, "status":"confirmed", "price":250000}' \
+  --data '{"title":"test", "description":"test order", "customer_id":1, "status":"confirmed", "price":250000}' \
   http://localhost:8080/orders
 ```
 
