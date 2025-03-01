@@ -3,6 +3,9 @@
 ## How To Run
 `go run main.go`
 
+## Table Design
+![ERD](/assets/ordermngmt.png)
+
 ## Features (with View)
 ### Sign In
 ```
