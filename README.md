@@ -1,82 +1,113 @@
+# Order Management
 
-Sign In
+## How To Run
+`go run main.go`
+
+## Features (with View)
+### Sign In
+```
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"email":"test@mail.com", "password":"test", "name":"test"}' \
   http://localhost:8080/signin
+```
 
-Log In
+### Log In
+```
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"email":"test@mail.com", "password":"test"}' \
   http://localhost:8080/login
+```
 
-Get Customer Detail
+### Get Customer Detail
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request GET \
   http://localhost:8080/customers/detail/1
+```
 
-Get Customer By Name
+### Get Customer By Name
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request GET \
   http://localhost:8080/customers/search/test
+```
 
-Get All Customers
+### Get All Customers
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request GET \
   http://localhost:8080/customers/list/10/0
+```
 
-Create Customer
+### Create Customer
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request POST \
   --data '{"name":"test3"}' \
   http://localhost:8080/customers
+```
 
-Update Customer
+### Update Customer
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request PUT \
   --data '{"id":1, "name":"test2"}' \
   http://localhost:8080/customers
+```
 
-Delete Customer
+### Delete Customer
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request DELETE \
   http://localhost:8080/customers/2
+```
 
-Get Order Detail
+### Get Order Detail
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request GET \
   http://localhost:8080/orders/detail/1
+```
 
-Get Order By Title
+### Get Order By Title
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request GET \
   http://localhost:8080/orders/search/test
+```
 
-Create Order
+### Create Order
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request POST \
   --data '{"title":"test", "description":"test order", "user_id":1, "status":"confirmed", "price":250000}' \
   http://localhost:8080/orders
+```
 
-Update Order Status
+### Update Order Status
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request PUT \
   --data '{"id":1, "status":"proceed"}' \
   http://localhost:8080/orders/status
+```
 
-Delete Order
+### Delete Order
+```
 curl --header "Content-Type: application/json" \
-  --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VySUQiOjB9.ItcBO98bLlUDS9Phzn0XBW6n0QyzpdlXxgT9LIJF4zQ" \
+  --header "Authorization: Bearer <token>" \
   --request DELETE \
   http://localhost:8080/orders/2
+```
