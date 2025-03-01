@@ -6,7 +6,7 @@
 ## Table Design
 ![ERD](https://github.com/ktiarad/order-management/blob/main/assets/erd.png)
 
-## Features (with View)
+## API List / Features (with View)
 ### Sign In
 ```
 curl --header "Content-Type: application/json" \
