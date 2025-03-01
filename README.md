@@ -4,7 +4,7 @@
 `go run main.go`
 
 ## Table Design
-![ERD](/assets/ordermngmt.png)
+![ERD](https://github.com/ktiarad/order-management/blob/main/assets/erd.png)
 
 ## Features (with View)
 ### Sign In
